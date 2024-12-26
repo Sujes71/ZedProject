@@ -9,12 +9,12 @@ public class EventListenerRegistry {
 
   private final Map<String, EventListener<?, ?>> listeners = new ConcurrentHashMap<>();
 
-  public <B, C> void register(String address, EventListener<B, C> listener) {
+  public <B, R> void register(String address, EventListener<B, R> listener) {
     listeners.put(address, listener);
   }
 
   @SuppressWarnings("unchecked")
-  public <B, C> EventListener<B, C> resolve(String address) {
-    return (EventListener<B, C>) listeners.get(address);
+  public <B, R> EventListener<B, R> resolve(String address) {
+    return (EventListener<B, R>) listeners.get(address);
   }
 }

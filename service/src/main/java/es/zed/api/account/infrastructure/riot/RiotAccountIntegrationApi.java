@@ -28,4 +28,3 @@ public class RiotAccountIntegrationApi {
     return Mono.just(AccountDto.builder().puuid(body).build());
   }
 }
-

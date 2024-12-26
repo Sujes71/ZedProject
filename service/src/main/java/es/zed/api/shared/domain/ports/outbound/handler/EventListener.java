@@ -2,7 +2,7 @@ package es.zed.api.shared.domain.ports.outbound.handler;
 
 import reactor.core.publisher.Mono;
 
-public interface EventListener<B, C> {
-  Mono<C> handleEvent(B body);
+@FunctionalInterface
+public interface EventListener<B, R> {
+  Mono<R> handleEvent(B body);
 }
-
