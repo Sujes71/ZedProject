@@ -3,7 +3,7 @@ package es.zed.api.account.infrastructure.riot;
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_PUUID_ADDRESS;
 
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
-import es.zed.api.shared.domain.ports.outbound.handler.EventListenerRegistry;
+import es.zed.api.shared.domain.ports.outbound.EventListenerRegistry;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

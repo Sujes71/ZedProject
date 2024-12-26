@@ -1,4 +1,4 @@
-package es.zed.api.shared.domain.ports.outbound.handler;
+package es.zed.api.shared.domain.ports.outbound;
 
 import reactor.core.publisher.Mono;
 

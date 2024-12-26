@@ -1,8 +1,6 @@
 package es.zed.api.shared.domain.ports.outbound;
 
 import es.zed.api.shared.domain.model.Message;
-import es.zed.api.shared.domain.ports.outbound.handler.EventListener;
-import es.zed.api.shared.domain.ports.outbound.handler.EventListenerRegistry;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;

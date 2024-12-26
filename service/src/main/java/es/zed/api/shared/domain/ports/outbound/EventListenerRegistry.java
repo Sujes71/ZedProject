@@ -1,4 +1,4 @@
-package es.zed.api.shared.domain.ports.outbound.handler;
+package es.zed.api.shared.domain.ports.outbound;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
