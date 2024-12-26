@@ -4,8 +4,8 @@ import es.zed.api.account.domain.model.AccountFilter;
 
 public class AccountAdapter {
 
-  public static AccountFilter adapt(String puuid) {
-    return AccountFilter.builder().puuid(puuid).build();
+  public static AccountFilter adapt(String gameName, String tagLine) {
+    return AccountFilter.builder().gameName(gameName).tagLine(tagLine).build();
   }
 
 }
