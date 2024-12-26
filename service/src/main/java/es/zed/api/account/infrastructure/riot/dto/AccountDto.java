@@ -13,4 +13,8 @@ import lombok.NoArgsConstructor;
 public class AccountDto extends Dto {
 
   private String puuid;
+
+  private String gameName;
+
+  private String tagLine;
 }
