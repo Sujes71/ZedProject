@@ -35,4 +35,5 @@ public class RiotAccountIntegrationApi extends RestHandler {
   public Mono<AccountDto> getAccountByPuuId(String puuid) {
     return doCall(riotAccountUrlMapper.mapUrlGetAccountByPuuId(puuid), HttpMethod.GET, null, AccountDto.class);
   }
+
 }
