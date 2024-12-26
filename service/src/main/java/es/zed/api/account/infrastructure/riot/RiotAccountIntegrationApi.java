@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -24,8 +25,9 @@ public class RiotAccountIntegrationApi extends RestHandler {
 
   private final EventListenerRegistry registry;
 
-  public RiotAccountIntegrationApi(EventListenerRegistry registry) {
-    this.registry = registry;
+  public RiotAccountIntegrationApi(EventListenerRegistry registry, RestTemplate restTemplate) {
+	  super(restTemplate);
+	  this.registry = registry;
   }
 
   @PostConstruct
@@ -36,6 +38,6 @@ public class RiotAccountIntegrationApi extends RestHandler {
   public Mono<AccountDto> getAccountByPuuId(String puuid) {
     Map<String, String> params = new HashMap<>();
     params.put("{puuid}", puuid);
-    return doCall(mapUrl(params, accountByPuuIdPath), HttpMethod.GET, addDefaultHeaders(), null, AccountDto.class);
+    return doCall(mapUrl(params, accountByPuuIdPath), HttpMethod.GET, null, AccountDto.class);
   }
 }
