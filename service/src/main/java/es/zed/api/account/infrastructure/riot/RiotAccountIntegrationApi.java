@@ -4,7 +4,6 @@ import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_AC
 import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
 
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
-import es.zed.api.account.infrastructure.riot.mapper.UrlAccountMapper;
 import es.zed.api.shared.domain.ports.outbound.EventListenerRegistry;
 import es.zed.api.shared.rest.handlers.RestHandler;
 import jakarta.annotation.PostConstruct;
