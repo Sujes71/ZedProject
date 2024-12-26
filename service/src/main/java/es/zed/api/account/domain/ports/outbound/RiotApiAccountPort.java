@@ -19,7 +19,7 @@ public class RiotApiAccountPort {
 
   public Mono<AccountDto> getAccountByPuuId(String puuid) {
     return outboundPort.requestEvent(
-        Message.<String, AccountDto>builder()
+        Message.<String>builder()
             .address(GET_ACCOUNT_BY_PUUID_ADDRESS)
             .body(puuid)
             .build()

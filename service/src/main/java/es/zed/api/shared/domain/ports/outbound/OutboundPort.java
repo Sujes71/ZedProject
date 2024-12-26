@@ -18,7 +18,7 @@ public class OutboundPort {
     this.eventPublisher = eventPublisher;
   }
 
-  public <B, C> Mono<C> requestEvent(Message<B, C> event) {
+  public <B, C> Mono<C> requestEvent(Message<B> event) {
     EventListener<B, C> listener = registry.resolve(event.address());
     if (listener == null) {
       return Mono.error(new IllegalArgumentException("No handler found for address: " + event.address()));
@@ -26,7 +26,7 @@ public class OutboundPort {
     return listener.handleEvent(event.body());
   }
 
-  public <B, C> void publishEvent(Message<B, C> event) {
+  public <B, C> void publishEvent(Message<B> event) {
     eventPublisher.publishEvent(event);
   }
 }
