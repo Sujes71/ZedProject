@@ -31,7 +31,6 @@ public class AccountController {
     this.getAccountMeHandler = getAccountMeHandler;
   }
 
-
   @GetMapping(path = GET_ACCOUNT_BY_PUUID_PATH, produces = "application/json")
   public Mono<AccountDto> getAccountByPuuId(@PathVariable String puuid) {
     return getAccountByPuuIdHandler.handle(puuid);
