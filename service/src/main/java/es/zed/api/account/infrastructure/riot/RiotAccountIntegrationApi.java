@@ -1,16 +1,13 @@
 package es.zed.api.account.infrastructure.riot;
 
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_PUUID_ADDRESS;
-import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
 
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
+import es.zed.api.account.infrastructure.riot.mapper.RiotAccountUrlMapper;
 import es.zed.api.shared.domain.ports.outbound.EventListenerRegistry;
 import es.zed.api.shared.rest.handlers.RestHandler;
 import jakarta.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -20,14 +17,14 @@ import reactor.core.publisher.Mono;
 @Component
 public class RiotAccountIntegrationApi extends RestHandler {
 
-  @Value("${riot.base.path}${riot.account.by-puuid.path}")
-  private String accountByPuuIdPath;
-
   private final EventListenerRegistry registry;
+  private final RiotAccountUrlMapper riotAccountUrlMapper;
 
-  public RiotAccountIntegrationApi(EventListenerRegistry registry, RestTemplate restTemplate) {
+  public RiotAccountIntegrationApi(EventListenerRegistry registry, RestTemplate restTemplate,
+	  RiotAccountUrlMapper riotAccountUrlMapper) {
 	  super(restTemplate);
 	  this.registry = registry;
+	  this.riotAccountUrlMapper = riotAccountUrlMapper;
   }
 
   @PostConstruct
@@ -36,8 +33,6 @@ public class RiotAccountIntegrationApi extends RestHandler {
   }
 
   public Mono<AccountDto> getAccountByPuuId(String puuid) {
-    Map<String, String> params = new HashMap<>();
-    params.put("{puuid}", puuid);
-    return doCall(mapUrl(params, accountByPuuIdPath), HttpMethod.GET, null, AccountDto.class);
+    return doCall(riotAccountUrlMapper.mapUrlGetAccountByPuuId(puuid), HttpMethod.GET, null, AccountDto.class);
   }
 }
