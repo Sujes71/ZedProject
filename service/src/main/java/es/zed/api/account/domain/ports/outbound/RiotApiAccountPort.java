@@ -15,7 +15,6 @@ public class RiotApiAccountPort {
   public static final String GET_ACCOUNT_BY_RIOT_ID_ADDRESS = "getAccountByRiotIdAddress";
   public static final String GET_ACCOUNT_ME_ADDRESS = "getAccountMeAddress";
 
-
   private RiotApiAccountPort() {
   }
 

@@ -1,4 +1,4 @@
-package es.zed.api.shared.infrastructure.configuration;
+package es.zed.configuration;
 
 import java.util.concurrent.Executor;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +17,9 @@ public class Config {
   @Bean(name = "taskExecutor")
   public Executor taskExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-    executor.setCorePoolSize(5); // Número mínimo de hilos.
-    executor.setMaxPoolSize(10); // Número máximo de hilos.
-    executor.setQueueCapacity(25); // Capacidad de la cola.
+    executor.setCorePoolSize(5);
+    executor.setMaxPoolSize(10);
+    executor.setQueueCapacity(25);
     executor.setThreadNamePrefix("AsyncThread-");
     executor.initialize();
     return executor;
