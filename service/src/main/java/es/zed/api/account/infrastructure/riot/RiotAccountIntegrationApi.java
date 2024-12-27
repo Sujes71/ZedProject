@@ -13,7 +13,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -22,8 +22,8 @@ public class RiotAccountIntegrationApi extends RestHandler {
 
   private final RiotAccountUrlMapper riotAccountUrlMapper;
 
-  public RiotAccountIntegrationApi(RestTemplate restTemplate, RiotAccountUrlMapper riotAccountUrlMapper) {
-	  super(restTemplate);
+  public RiotAccountIntegrationApi(WebClient.Builder webClientBuilder, RiotAccountUrlMapper riotAccountUrlMapper) {
+	  super(webClientBuilder);
 	  this.riotAccountUrlMapper = riotAccountUrlMapper;
   }
 

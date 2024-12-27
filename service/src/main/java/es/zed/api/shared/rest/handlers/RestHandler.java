@@ -1,66 +1,44 @@
 package es.zed.api.shared.rest.handlers;
 
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
 public abstract class RestHandler {
+
   @Value("${riot.api.key}")
   private String apiKey;
 
-  private final RestTemplate restTemplate;
+  private final WebClient webClient;
 
-  protected RestHandler(RestTemplate restTemplate) {
-    this.restTemplate = restTemplate;
+  protected RestHandler(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
   }
 
   public <T> Mono<T> doCall(final String url, final HttpMethod httpMethod, final Object body, final Class<T> responseClass) {
-  return Mono.defer(() -> {
     log.info("Do call {}, method {}", url, httpMethod);
 
-    try {
-      RequestEntity<Object> request = new RequestEntity<>(body, addDefaultHeaders(), httpMethod, createUri(url));
+    WebClient.RequestBodySpec request = webClient.method(httpMethod)
+        .uri(URI.create(url))
+        .headers(headers -> headers.add("X-Riot-Token", apiKey));
 
-      ResponseEntity<T> response = restTemplate.exchange(request, responseClass);
-
-      return Mono.just(extractResponseData(response));
-    } catch (ResourceAccessException ex) {
-      log.error("Connection error occurred: {}", ex.getMessage(), ex);
-      return Mono.error(new Exception("Connection error occurred", ex));
-    } catch (Exception ex) {
-      log.error("Unexpected error occurred: {}", ex.getMessage(), ex);
-      return Mono.error(new RuntimeException("Unexpected error occurred", ex));
+    if (Objects.nonNull(body)) {
+      request.bodyValue(body);
     }
-  });
-}
 
-  private HttpHeaders addDefaultHeaders() {
-    HttpHeaders httpHeaders = new HttpHeaders();
-    httpHeaders.add("X-Riot-Token", apiKey);
-    return httpHeaders;
+    return request.retrieve()
+        .bodyToMono(responseClass)
+        .doOnError(WebClientResponseException.class, ex ->
+            log.error("HTTP error occurred: {}", ex.getMessage(), ex))
+        .onErrorResume(WebClientResponseException.class, ex ->
+            Mono.error(new RuntimeException("Error occurred during HTTP call", ex)));
   }
-
-  private URI createUri(final String uriPath) throws Exception {
-    try {
-      return new URI(uriPath);
-    } catch (URISyntaxException ex) {
-      throw new Exception("Uri generator error occurred", ex);
-    }
-  }
-
-  private <T> T extractResponseData(final ResponseEntity<T> responseEntity) {
-    return responseEntity.getBody();
-  }
-
 }
