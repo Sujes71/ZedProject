@@ -1,4 +1,4 @@
-package es.zed.api.shared.rest.handlers;
+package es.zed.api.shared.infrastructure.riot;
 
 import java.net.URI;
 import java.util.Objects;

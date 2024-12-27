@@ -8,7 +8,7 @@ import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import es.zed.api.account.infrastructure.riot.mapper.RiotAccountUrlMapper;
-import es.zed.api.shared.rest.handlers.RestHandler;
+import es.zed.api.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
