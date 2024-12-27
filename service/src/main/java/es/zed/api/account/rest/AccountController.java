@@ -1,6 +1,6 @@
 package es.zed.api.account.rest;
 
-import static es.zed.api.account.rest.adapter.AccountAdapter.adapt;
+import static es.zed.api.account.rest.adapter.AccountFilterAdapter.adapt;
 import static es.zed.api.shared.rest.Routing.ACCOUNT_PATH;
 import static es.zed.api.shared.rest.Routing.GET_ACCOUNT_BY_PUUID_PATH;
 import static es.zed.api.shared.rest.Routing.GET_ACCOUNT_BY_RIOT_ID_PATH;
