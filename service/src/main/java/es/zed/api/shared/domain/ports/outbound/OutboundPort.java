@@ -1,30 +1,38 @@
 package es.zed.api.shared.domain.ports.outbound;
 
 import es.zed.api.shared.domain.model.Message;
-import org.springframework.context.ApplicationEventPublisher;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
 public class OutboundPort {
 
-  private final EventListenerRegistry registry;
-  private final ApplicationEventPublisher eventPublisher;
+  private static final Map<String, EventHandler<?, ?>> listeners = new ConcurrentHashMap<>();
 
-  public OutboundPort(EventListenerRegistry registry, ApplicationEventPublisher eventPublisher) {
-    this.registry = registry;
-    this.eventPublisher = eventPublisher;
+  private OutboundPort() {
   }
 
-  public <B, R> Mono<R> requestEvent(Message<B> event) {
-    EventListener<B, R> listener = registry.resolve(event.address());
-    if (listener == null) {
+  public static <B, R> Mono<R> requestEvent(Message<B> event) {
+    EventHandler<B, R> handler = resolve(event.address());
+    if (handler == null) {
       return Mono.error(new IllegalArgumentException("No handler found for address: " + event.address()));
     }
-    return listener.handleEvent(event.body());
+    return handler.handle(event.body());
   }
 
-  public <B> void publishEvent(Message<B> event) {
-    eventPublisher.publishEvent(event);
+  public static <B, R> void register(String address, EventHandler<B, R> handler) {
+    listeners.put(address, handler);
+  }
+
+  @SuppressWarnings("unchecked")
+  private static <B, R> EventHandler<B, R> resolve(String address) {
+    return (EventHandler<B, R>) listeners.get(address);
+  }
+
+  @FunctionalInterface
+  public interface EventHandler<B, R> {
+    Mono<R> handle(B body);
   }
 }

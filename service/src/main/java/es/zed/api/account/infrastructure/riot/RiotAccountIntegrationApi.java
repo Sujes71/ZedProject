@@ -3,11 +3,11 @@ package es.zed.api.account.infrastructure.riot;
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_PUUID_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_RIOT_ID_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_ME_ADDRESS;
+import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import es.zed.api.account.infrastructure.riot.mapper.RiotAccountUrlMapper;
-import es.zed.api.shared.domain.ports.outbound.EventListenerRegistry;
 import es.zed.api.shared.rest.handlers.RestHandler;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -20,21 +20,18 @@ import reactor.core.publisher.Mono;
 @Component
 public class RiotAccountIntegrationApi extends RestHandler {
 
-  private final EventListenerRegistry registry;
   private final RiotAccountUrlMapper riotAccountUrlMapper;
 
-  public RiotAccountIntegrationApi(EventListenerRegistry registry, RestTemplate restTemplate,
-	  RiotAccountUrlMapper riotAccountUrlMapper) {
+  public RiotAccountIntegrationApi(RestTemplate restTemplate, RiotAccountUrlMapper riotAccountUrlMapper) {
 	  super(restTemplate);
-	  this.registry = registry;
 	  this.riotAccountUrlMapper = riotAccountUrlMapper;
   }
 
   @PostConstruct
-  public void register() {
-    registry.register(GET_ACCOUNT_BY_PUUID_ADDRESS, this::getAccountByPuuId);
-    registry.register(GET_ACCOUNT_BY_RIOT_ID_ADDRESS, this::getAccountByRiotId);
-    registry.register(GET_ACCOUNT_ME_ADDRESS, v -> getAccountMe());
+  public void start() {
+    register(GET_ACCOUNT_BY_PUUID_ADDRESS, this::getAccountByPuuId);
+    register(GET_ACCOUNT_BY_RIOT_ID_ADDRESS, this::getAccountByRiotId);
+    register(GET_ACCOUNT_ME_ADDRESS, v -> getAccountMe());
   }
 
   public Mono<AccountDto> getAccountByPuuId(String puuid) {
