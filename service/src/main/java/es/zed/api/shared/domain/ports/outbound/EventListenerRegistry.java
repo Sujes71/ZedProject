@@ -1,15 +1,18 @@
 package es.zed.api.shared.domain.ports.outbound;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EventListenerRegistry {
 
-  private final Map<String, EventListener<?, ?>> listeners = new ConcurrentHashMap<>();
+  private final Map<String, EventListener<?, ?>> listeners;
 
-  public <B, R> void register(String address, EventListener<B, R> listener) {
+	public EventListenerRegistry(Map<String, EventListener<?, ?>> listeners) {
+		this.listeners = listeners;
+	}
+
+	public <B, R> void register(String address, EventListener<B, R> listener) {
     listeners.put(address, listener);
   }
 
