@@ -1,0 +1,5 @@
+CREATE TABLE Account (
+    id UUID PRIMARY KEY,
+    gameName VARCHAR(255) NOT NULL,
+    tagLine VARCHAR(255) NOT NULL
+);

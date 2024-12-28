@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto extends Dto {
+public class  AccountDto extends Dto {
 
   private String puuid;
 

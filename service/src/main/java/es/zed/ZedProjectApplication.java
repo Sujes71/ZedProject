@@ -1,14 +1,10 @@
 package es.zed;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@SpringBootApplication(exclude = {
-    org.springframework.boot.autoconfigure.r2dbc.R2dbcAutoConfiguration.class,
-    org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class
-})
-
+@EnableR2dbcRepositories
 @EnableAsync
 public class ZedProjectApplication {
 
