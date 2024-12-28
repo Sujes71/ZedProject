@@ -1,8 +1,6 @@
 package es.zed.api.account.infrastructure.riot;
 
-import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_PUUID_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_BY_RIOT_ID_ADDRESS;
-import static es.zed.api.account.domain.ports.outbound.RiotApiAccountPort.GET_ACCOUNT_ME_ADDRESS;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
@@ -29,20 +27,11 @@ public class RiotAccountIntegrationApi extends RestHandler {
 
   @PostConstruct
   public void start() {
-    register(GET_ACCOUNT_BY_PUUID_ADDRESS, this::getAccountByPuuId);
     register(GET_ACCOUNT_BY_RIOT_ID_ADDRESS, this::getAccountByRiotId);
-    register(GET_ACCOUNT_ME_ADDRESS, v -> getAccountMe());
-  }
-
-  public Mono<AccountDto> getAccountByPuuId(String puuid) {
-    return doCall(riotAccountUrlMapper.mapUrlGetAccountByPuuId(puuid), HttpMethod.GET, null, AccountDto.class);
   }
 
   public Mono<AccountDto> getAccountByRiotId(AccountFilter filter) {
     return doCall(riotAccountUrlMapper.mapUrlGetAccountByRiotId(filter), HttpMethod.GET, null, AccountDto.class);
   }
 
-  public Mono<AccountDto> getAccountMe() {
-    return doCall(riotAccountUrlMapper.mapUrlAccountMe(), HttpMethod.GET, null, AccountDto.class);
-  }
 }
