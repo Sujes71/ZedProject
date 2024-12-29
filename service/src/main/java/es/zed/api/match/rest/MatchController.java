@@ -30,7 +30,7 @@ public class MatchController {
       @RequestParam(required = false) Long endTime,
       @RequestParam(required = false) Integer queue,
       @RequestParam(required = false) String type,
-      @RequestParam(defaultValue = "0") int start,
+      @RequestParam(defaultValue = "0") Integer start,
       @RequestParam(defaultValue = "20") Integer count) {
     return getMatchesByPuuIdUseCase.execute(adapt(puuid, startTime, endTime, queue, type, start, count));
   }

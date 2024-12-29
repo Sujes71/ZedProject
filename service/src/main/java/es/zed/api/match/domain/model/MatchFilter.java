@@ -69,6 +69,14 @@ public class MatchFilter extends Filter {
     this.startTime = startTime;
   }
 
+  public Long getEndTime() {
+    return endTime;
+  }
+
+  public void setEndTime(Long endTime) {
+    this.endTime = endTime;
+  }
+
   public String getPuuid() {
     return puuid;
   }

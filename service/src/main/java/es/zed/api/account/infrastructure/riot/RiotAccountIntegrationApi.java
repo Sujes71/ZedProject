@@ -10,7 +10,7 @@ import es.zed.api.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.Builder;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -18,7 +18,7 @@ public class RiotAccountIntegrationApi extends RestHandler {
 
   private final RiotAccountUrlMapper riotAccountUrlMapper;
 
-  public RiotAccountIntegrationApi(WebClient.Builder webClientBuilder, RiotAccountUrlMapper riotAccountUrlMapper) {
+  public RiotAccountIntegrationApi(Builder webClientBuilder, RiotAccountUrlMapper riotAccountUrlMapper) {
 	  super(webClientBuilder);
 	  this.riotAccountUrlMapper = riotAccountUrlMapper;
   }
