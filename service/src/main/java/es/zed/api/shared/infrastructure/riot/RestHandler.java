@@ -2,7 +2,8 @@ package es.zed.api.shared.infrastructure.riot;
 
 import java.net.URI;
 import java.util.Objects;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
-@Slf4j
+
 @Component
 public abstract class RestHandler {
 
@@ -18,6 +19,9 @@ public abstract class RestHandler {
   private String apiKey;
 
   private final WebClient webClient;
+
+  private static final Logger log = LogManager.getLogger(RestHandler.class);
+
 
   protected RestHandler(WebClient.Builder webClientBuilder) {
     this.webClient = webClientBuilder.build();

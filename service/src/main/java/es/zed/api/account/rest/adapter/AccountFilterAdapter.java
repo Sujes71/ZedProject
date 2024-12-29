@@ -5,7 +5,6 @@ import es.zed.api.account.domain.model.AccountFilter;
 public class AccountFilterAdapter {
 
   public static AccountFilter adapt(String gameName, String tagLine) {
-    return AccountFilter.builder().gameName(gameName).tagLine(tagLine).build();
+    return new AccountFilter(gameName, tagLine);
   }
-
 }
