@@ -5,7 +5,7 @@ import static es.zed.api.shared.rest.Routing.ACCOUNT_PATH;
 import static es.zed.api.shared.rest.Routing.GET_ACCOUNT_BY_RIOT_ID_PATH;
 
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
-import es.zed.api.account.rest.handlers.GetAccountByRiotIdHandler;
+import es.zed.api.account.rest.handler.GetAccountByRiotIdHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

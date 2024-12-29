@@ -1,4 +1,4 @@
-package es.zed.api.account.rest.handlers;
+package es.zed.api.account.rest.handler;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.domain.ports.inbound.GetAccountByRiotIdUseCase;

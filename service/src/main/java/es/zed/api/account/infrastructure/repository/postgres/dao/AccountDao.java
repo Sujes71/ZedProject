@@ -14,6 +14,6 @@ public interface AccountDao extends ReactiveCrudRepository<Account, String> {
   Mono<Account> findByGameNameAndTagLine(String gameName, String tagLine);
 
   @Query("INSERT INTO account(puuid, game_name, tag_line) VALUES(:puuid, :gameName, :tagLine)")
-  Mono<Void> insert(@Param("puuid") String puuid, @Param("gameName") String gameName, @Param("tagLine") String tagLine);
+  Mono<Void> insert(String puuid, String gameName, String tagLine);
 
 }
