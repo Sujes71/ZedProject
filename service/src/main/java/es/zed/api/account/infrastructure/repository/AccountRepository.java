@@ -10,6 +10,7 @@ import es.zed.api.account.infrastructure.repository.postgres.dao.AccountDao;
 import es.zed.api.account.infrastructure.repository.postgres.entity.Account;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import jakarta.annotation.PostConstruct;
+import java.util.Objects;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -35,11 +36,8 @@ public class AccountRepository {
 	public Mono<Account> findByRiotId(AccountFilter filter) {
 		return accountDao.findByGameNameAndTagLine(filter.getGameName(), filter.getTagLine())
 			.doOnSuccess(acc -> {
-				if (acc != null) {
+				if (Objects.nonNull(acc)) {
 					log.info("Account found {}", acc);
-				} else {
-					log.info("Account not found with gameName {} and tagLine {}",
-						filter.getGameName(), filter.getTagLine());
 				}
 			})
 			.doOnError(error -> log.error("Error finding account: {}", error.getMessage()));

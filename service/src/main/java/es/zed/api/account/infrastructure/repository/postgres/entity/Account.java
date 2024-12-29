@@ -3,20 +3,15 @@ package es.zed.api.account.infrastructure.repository.postgres.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import java.util.Objects;
-import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("Account")
-public class Account implements Persistable<UUID> {
+public class Account implements Persistable<String> {
 
 	@Id
-	@JsonIgnore
-	private UUID id;
-
-	@Column("puuid")
 	private String puuid;
 
 	@Column("game_name")
@@ -34,26 +29,14 @@ public class Account implements Persistable<UUID> {
 	@Override
 	@JsonIgnore
 	public boolean isNew() {
-		if (Objects.isNull(this.id)) {
-			this.id = UUID.randomUUID();
-			return true;
-		}
-		return false;
+		return true;
 	}
 
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getPuuid() {
+	public String getId() {
 		return puuid;
 	}
 
-	public void setPuuid(String puuid) {
+	public void setId(String puuid) {
 		this.puuid = puuid;
 	}
 
@@ -79,18 +62,17 @@ public class Account implements Persistable<UUID> {
 			return false;
 		}
 		Account account = (Account) o;
-		return Objects.equals(id, account.id);
+		return Objects.equals(puuid, account.puuid);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(puuid);
 	}
 
 	@Override
 	public String toString() {
 		return "Account{" +
-			"id=" + id +
 			", puuid='" + puuid + '\'' +
 			", gameName='" + gameName + '\'' +
 			", tagLine='" + tagLine + '\'' +
@@ -98,6 +80,6 @@ public class Account implements Persistable<UUID> {
 	}
 
 	public static Account dtoToAccount(AccountDto accountDto) {
-		return new Account(accountDto.getPuuid(), accountDto.getGameName().toLowerCase(), accountDto.getTagLine().toLowerCase());
+		return new Account(accountDto.getPuuid(), accountDto.getGameName(), accountDto.getTagLine());
 	}
 }

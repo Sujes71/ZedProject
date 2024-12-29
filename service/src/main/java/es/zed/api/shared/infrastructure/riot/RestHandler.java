@@ -15,13 +15,12 @@ import reactor.core.publisher.Mono;
 @Component
 public abstract class RestHandler {
 
+  private static final Logger log = LogManager.getLogger(RestHandler.class);
+
   @Value("${riot.api.key}")
   private String apiKey;
 
   private final WebClient webClient;
-
-  private static final Logger log = LogManager.getLogger(RestHandler.class);
-
 
   protected RestHandler(WebClient.Builder webClientBuilder) {
     this.webClient = webClientBuilder.build();
