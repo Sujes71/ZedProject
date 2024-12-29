@@ -2,7 +2,6 @@ package es.zed.api.account.infrastructure.repository;
 
 import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.SAVE_ACCOUNT_DB_ADDRESS;
-import static es.zed.api.account.infrastructure.repository.postgres.entity.Account.dtoToAccount;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
@@ -37,15 +36,15 @@ public class AccountRepository {
 		return accountDao.findByGameNameAndTagLine(filter.getGameName(), filter.getTagLine())
 			.doOnSuccess(acc -> {
 				if (Objects.nonNull(acc)) {
-					log.info("Account found {}", acc);
+					log.info("Found {}", acc);
 				}
 			})
 			.doOnError(error -> log.error("Error finding account: {}", error.getMessage()));
 	}
 
-	public Mono<Account> saveAccount(AccountDto accountDto) {
-		return accountDao.save(dtoToAccount(accountDto))
-			.doOnSuccess(savedAccount -> log.info("Account saved {}", savedAccount))
+	public Mono<Void> saveAccount(AccountDto accountDto) {
+		return accountDao.insert(accountDto.getPuuid(), accountDto.getGameName(), accountDto.getTagLine())
+			.doOnSuccess(_ -> log.info("Account saved"))
 			.doOnError(error -> log.error("Error saving account: {}", error.getMessage()));
 	}
 }

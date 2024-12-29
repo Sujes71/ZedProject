@@ -46,6 +46,6 @@ public class  AccountDto extends Dto {
   }
 
   public static AccountDto dtoToAccount(Account account) {
-    return new AccountDto(account.getId(), account.getGameName(), account.getTagLine());
+    return new AccountDto(account.getPuuid(), account.getGameName(), account.getTagLine());
   }
 }

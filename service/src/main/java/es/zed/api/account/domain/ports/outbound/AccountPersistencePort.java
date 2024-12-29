@@ -22,7 +22,7 @@ public class AccountPersistencePort {
 		return requestEvent(new Message<>(GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS, filter));
 	}
 
-	public Mono<Account> saveAccountDb(AccountDto accountDto) {
+	public Mono<Void> saveAccountDb(AccountDto accountDto) {
 		return requestEvent(new Message<>(SAVE_ACCOUNT_DB_ADDRESS, accountDto));
 	}
 }

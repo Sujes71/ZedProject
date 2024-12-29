@@ -1,15 +1,12 @@
 package es.zed.api.account.infrastructure.repository.postgres.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import java.util.Objects;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("Account")
-public class Account implements Persistable<String> {
+public class Account {
 
 	@Id
 	private String puuid;
@@ -26,17 +23,11 @@ public class Account implements Persistable<String> {
 		this.tagLine = tagLine;
 	}
 
-	@Override
-	@JsonIgnore
-	public boolean isNew() {
-		return true;
-	}
-
-	public String getId() {
+	public String getPuuid() {
 		return puuid;
 	}
 
-	public void setId(String puuid) {
+	public void setPuuid(String puuid) {
 		this.puuid = puuid;
 	}
 
@@ -72,14 +63,9 @@ public class Account implements Persistable<String> {
 
 	@Override
 	public String toString() {
-		return "Account{" +
-			", puuid='" + puuid + '\'' +
+		return "Account { " +
+			"puuid='" + puuid + '\'' +
 			", gameName='" + gameName + '\'' +
-			", tagLine='" + tagLine + '\'' +
-			'}';
-	}
-
-	public static Account dtoToAccount(AccountDto accountDto) {
-		return new Account(accountDto.getPuuid(), accountDto.getGameName(), accountDto.getTagLine());
+			", tagLine='" + tagLine + '\'' + " }";
 	}
 }
