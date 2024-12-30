@@ -10,8 +10,8 @@ public class AccountFilter extends Filter {
   private String tagLine;
 
   public AccountFilter(String gameName, String tagLine) {
-    this.gameName = gameName.toLowerCase();
-    this.tagLine = tagLine.toLowerCase();
+    this.gameName = gameName;
+    this.tagLine = tagLine;
   }
 
   public String getTagLine() {

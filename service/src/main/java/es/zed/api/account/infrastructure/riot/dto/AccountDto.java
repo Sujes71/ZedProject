@@ -1,5 +1,6 @@
 package es.zed.api.account.infrastructure.riot.dto;
 
+import es.zed.api.account.infrastructure.repository.postgres.entity.Account;
 import es.zed.api.shared.infrastructure.riot.dto.Dto;
 
 
@@ -42,5 +43,9 @@ public class  AccountDto extends Dto {
 
   public void setTagLine(String tagLine) {
     this.tagLine = tagLine;
+  }
+
+  public static AccountDto dtoToAccount(Account account) {
+    return new AccountDto(account.getPuuid(), account.getGameName(), account.getTagLine());
   }
 }
