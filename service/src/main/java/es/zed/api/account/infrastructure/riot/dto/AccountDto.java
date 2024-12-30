@@ -47,7 +47,7 @@ public class  AccountDto extends Dto {
     this.tagLine = tagLine;
   }
 
-  public static AccountDto dtoToAccount(Account account) {
+  public static AccountDto accountDto(Account account) {
     return new AccountDto(account.getId(), account.getGameName(), account.getTagLine());
   }
 }
