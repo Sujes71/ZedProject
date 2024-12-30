@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class OutboundPort {
 
-  private static final Map<String, EventHandler<?, ?>> listeners = new ConcurrentHashMap<>();
+  private static final Map<String, EventHandler<?, ?>> eventBus = new ConcurrentHashMap<>();
 
   private OutboundPort() {
   }
@@ -23,12 +23,12 @@ public class OutboundPort {
   }
 
   public static <B, R> void register(String address, EventHandler<B, R> handler) {
-    listeners.put(address, handler);
+    eventBus.put(address, handler);
   }
 
   @SuppressWarnings("unchecked")
   private static <B, R> EventHandler<B, R> resolve(String address) {
-    return (EventHandler<B, R>) listeners.get(address);
+    return (EventHandler<B, R>) eventBus.get(address);
   }
 
   @FunctionalInterface

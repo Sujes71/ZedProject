@@ -1,6 +1,6 @@
 package es.zed.api.account.domain.core;
 
-import static es.zed.api.account.infrastructure.riot.dto.AccountDto.dtoToAccount;
+import static es.zed.api.account.infrastructure.riot.dto.AccountDto.accountToDto;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.domain.ports.inbound.GetAccountByRiotIdUseCase;
@@ -29,7 +29,7 @@ public class GetAccountByRiotIdUseCaseImpl implements GetAccountByRiotIdUseCase 
   @Override
   public Mono<AccountDto> execute(AccountFilter filter) {
     return accountPersistencePort.getAccountByRiotIdDb(filter)
-        .flatMap(account -> Mono.just(dtoToAccount(account)))
+        .flatMap(account -> Mono.just(accountToDto(account)))
         .switchIfEmpty(
             Mono.defer(() -> {
               log.info("No record found in the database, calling the API...");
