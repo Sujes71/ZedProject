@@ -3,7 +3,7 @@ package es.zed.api.account.domain.core;
 import static es.zed.api.account.infrastructure.riot.dto.AccountDto.dtoToAccount;
 
 import es.zed.api.account.domain.model.AccountFilter;
-import es.zed.api.account.domain.ports.inbound.GetAccountByRiotIdUseCase;
+import es.zed.api.account.domain.ports.inbound.GetAccountByGameTagUseCase;
 import es.zed.api.account.domain.ports.outbound.AccountPersistencePort;
 import es.zed.api.account.domain.ports.outbound.AccountRiotApiPort;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class GetAccountByRiotIdUseCaseImpl implements GetAccountByRiotIdUseCase {
+public class GetAccountByGameTagUseCaseImpl implements GetAccountByGameTagUseCase {
 
-  private static final Logger log = LogManager.getLogger(GetAccountByRiotIdUseCaseImpl.class);
+  private static final Logger log = LogManager.getLogger(GetAccountByGameTagUseCaseImpl.class);
 
   private final AccountRiotApiPort accountRiotApiPort;
   private final AccountPersistencePort accountPersistencePort;
 
-	public GetAccountByRiotIdUseCaseImpl(AccountRiotApiPort accountRiotApiPort,
+	public GetAccountByGameTagUseCaseImpl(AccountRiotApiPort accountRiotApiPort,
 		AccountPersistencePort accountPersistencePort) {
 		this.accountRiotApiPort = accountRiotApiPort;
 		this.accountPersistencePort = accountPersistencePort;
@@ -28,13 +28,13 @@ public class GetAccountByRiotIdUseCaseImpl implements GetAccountByRiotIdUseCase 
 
   @Override
   public Mono<AccountDto> execute(AccountFilter filter) {
-    return accountPersistencePort.getAccountByRiotIdDb(filter)
+    return accountPersistencePort.getAccountByGameTag(filter)
         .flatMap(account -> Mono.just(dtoToAccount(account)))
         .switchIfEmpty(
             Mono.defer(() -> {
               log.info("No record found in the database, calling the API...");
-              return accountRiotApiPort.getAccountByRiotId(filter)
-                  .flatMap(accountDto -> accountPersistencePort.saveAccountDb(accountDto)
+              return accountRiotApiPort.getAccountByGameTag(filter)
+                  .flatMap(accountDto -> accountPersistencePort.saveAccount(accountDto)
                       .thenReturn(accountDto));
             })
         );

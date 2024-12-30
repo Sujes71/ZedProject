@@ -1,12 +1,14 @@
 package es.zed.api.account.infrastructure.riot.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import es.zed.api.account.infrastructure.repository.postgres.entity.Account;
 import es.zed.api.shared.infrastructure.riot.dto.Dto;
 
 
 public class  AccountDto extends Dto {
 
-  private String puuid;
+  @JsonAlias("puuid")
+  private String id;
 
   private String gameName;
 
@@ -15,18 +17,18 @@ public class  AccountDto extends Dto {
   public AccountDto() {
   }
 
-  public AccountDto(String puuid, String gameName, String tagLine) {
-    this.puuid = puuid;
+  public AccountDto(String id, String gameName, String tagLine) {
+    this.id = id;
     this.gameName = gameName;
     this.tagLine = tagLine;
   }
 
-  public String getPuuid() {
-    return puuid;
+  public String getId() {
+    return id;
   }
 
-  public void setPuuid(String puuid) {
-    this.puuid = puuid;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public String getGameName() {
@@ -46,6 +48,6 @@ public class  AccountDto extends Dto {
   }
 
   public static AccountDto dtoToAccount(Account account) {
-    return new AccountDto(account.getPuuid(), account.getGameName(), account.getTagLine());
+    return new AccountDto(account.getId(), account.getGameName(), account.getTagLine());
   }
 }

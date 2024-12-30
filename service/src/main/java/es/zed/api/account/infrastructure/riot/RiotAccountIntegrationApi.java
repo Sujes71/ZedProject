@@ -1,6 +1,6 @@
 package es.zed.api.account.infrastructure.riot;
 
-import static es.zed.api.account.domain.ports.outbound.AccountRiotApiPort.GET_ACCOUNT_BY_RIOT_ID_ADDRESS;
+import static es.zed.api.account.domain.ports.outbound.AccountRiotApiPort.GET_ACCOUNT_BY_GAME_TAG_ADDRESS;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
@@ -25,11 +25,11 @@ public class RiotAccountIntegrationApi extends RestHandler {
 
   @PostConstruct
   public void start() {
-    register(GET_ACCOUNT_BY_RIOT_ID_ADDRESS, this::getAccountByRiotId);
+    register(GET_ACCOUNT_BY_GAME_TAG_ADDRESS, this::getAccountByGameTag);
   }
 
-  public Mono<AccountDto> getAccountByRiotId(AccountFilter filter) {
-    return doCall(riotAccountUrlMapper.mapUrlGetAccountByRiotId(filter), HttpMethod.GET, null, AccountDto.class);
+  public Mono<AccountDto> getAccountByGameTag(AccountFilter filter) {
+    return doCall(riotAccountUrlMapper.mapUrlGetAccountByGameTag(filter), HttpMethod.GET, null, AccountDto.class);
   }
 
 }

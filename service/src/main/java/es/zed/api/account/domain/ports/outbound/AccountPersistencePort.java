@@ -12,17 +12,17 @@ import reactor.core.publisher.Mono;
 @Component
 public class AccountPersistencePort {
 
-	public static final String GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS = "getAccountByRiotIdDbAddress";
-	public static final String SAVE_ACCOUNT_DB_ADDRESS = "saveAccountAddress";
+	public static final String GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS = "getAccountByGameTagDbAddress";
+	public static final String SAVE_ACCOUNT_DB_ADDRESS = "saveAccountDbAddress";
 
 	private AccountPersistencePort(){
 	}
 
-	public Mono<Account> getAccountByRiotIdDb(AccountFilter filter) {
-		return requestEvent(new Message<>(GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS, filter));
+	public Mono<Account> getAccountByGameTag(AccountFilter filter) {
+		return requestEvent(new Message<>(GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS, filter));
 	}
 
-	public Mono<Void> saveAccountDb(AccountDto accountDto) {
+	public Mono<Void> saveAccount(AccountDto accountDto) {
 		return requestEvent(new Message<>(SAVE_ACCOUNT_DB_ADDRESS, accountDto));
 	}
 }

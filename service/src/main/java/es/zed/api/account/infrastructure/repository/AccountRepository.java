@@ -1,6 +1,6 @@
 package es.zed.api.account.infrastructure.repository;
 
-import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS;
+import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.SAVE_ACCOUNT_DB_ADDRESS;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
@@ -28,22 +28,22 @@ public class AccountRepository {
 
 	@PostConstruct
 	public void start() {
-		register(GET_ACCOUNT_BY_RIOT_ID_DB_ADDRESS, this::findByRiotId);
+    register(GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS, this::findByGameTag);
 		register(SAVE_ACCOUNT_DB_ADDRESS, this::saveAccount);
 	}
 
-	public Mono<Account> findByRiotId(AccountFilter filter) {
+	public Mono<Account> findByGameTag(AccountFilter filter) {
 		return accountDao.findByGameNameAndTagLine(filter.getGameName(), filter.getTagLine())
-			.doOnSuccess(acc -> {
-				if (Objects.nonNull(acc)) {
-					log.info("Found {}", acc);
+			.doOnSuccess(account -> {
+				if (Objects.nonNull(account)) {
+					log.info("Found {}", account);
 				}
 			})
 			.doOnError(error -> log.error("Error finding account: {}", error.getMessage()));
 	}
 
 	public Mono<Void> saveAccount(AccountDto accountDto) {
-		return accountDao.insert(accountDto.getPuuid(), accountDto.getGameName(), accountDto.getTagLine())
+		return accountDao.insert(accountDto.getId(), accountDto.getGameName(), accountDto.getTagLine())
 			.doOnSuccess(_ -> log.info("Account saved"))
 			.doOnError(error -> log.error("Error saving account: {}", error.getMessage()));
 	}

@@ -12,7 +12,7 @@ public interface AccountDao extends ReactiveCrudRepository<Account, String> {
   @Query("SELECT * FROM account WHERE LOWER(game_name) = LOWER(:gameName) AND LOWER(tag_line) = LOWER(:tagLine)")
   Mono<Account> findByGameNameAndTagLine(String gameName, String tagLine);
 
-  @Query("INSERT INTO account(puuid, game_name, tag_line) VALUES(:puuid, :gameName, :tagLine)")
-  Mono<Void> insert(String puuid, String gameName, String tagLine);
+  @Query("INSERT INTO account(id, game_name, tag_line) VALUES(:id, :gameName, :tagLine)")
+  Mono<Void> insert(String id, String gameName, String tagLine);
 
 }

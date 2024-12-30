@@ -5,5 +5,5 @@ import es.zed.api.shared.domain.ports.inbound.UseCase;
 import java.util.List;
 import reactor.core.publisher.Mono;
 
-public interface GetMatchesByPuuIdUseCase extends UseCase<MatchFilter, Mono<List<String>>> {
+public interface GetMatchesByAccountIdUseCase extends UseCase<MatchFilter, Mono<List<String>>> {
 }
