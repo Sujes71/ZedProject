@@ -5,5 +5,5 @@ import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import es.zed.api.shared.domain.ports.inbound.UseCase;
 import reactor.core.publisher.Mono;
 
-public interface GetAccountByRiotIdUseCase extends UseCase<AccountFilter, Mono<AccountDto>> {
+public interface GetAccountByGameTagUseCase extends UseCase<AccountFilter, Mono<AccountDto>> {
 }

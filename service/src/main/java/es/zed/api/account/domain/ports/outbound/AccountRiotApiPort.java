@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 @Component
 public class AccountRiotApiPort {
 
-  public static final String GET_ACCOUNT_BY_RIOT_ID_ADDRESS = "getAccountByRiotIdAddress";
+  public static final String GET_ACCOUNT_BY_GAME_TAG_ADDRESS = "getAccountByGameTagAddress";
 
   private AccountRiotApiPort() {
   }
 
-  public Mono<AccountDto> getAccountByRiotId(AccountFilter filter) {
-    return requestEvent(new Message<>(GET_ACCOUNT_BY_RIOT_ID_ADDRESS, filter));
+  public Mono<AccountDto> getAccountByGameTag(AccountFilter filter) {
+    return requestEvent(new Message<>(GET_ACCOUNT_BY_GAME_TAG_ADDRESS, filter));
   }
 }

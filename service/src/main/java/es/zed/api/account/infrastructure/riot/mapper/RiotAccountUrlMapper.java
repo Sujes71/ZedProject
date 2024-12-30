@@ -14,12 +14,12 @@ public class RiotAccountUrlMapper {
   @Value("${riot.base.path}")
   private String basePath;
   @Value("${riot.account.by-riot-id.path}")
-  private String accountByRiotIdPath;
+  private String accountByGameTagPath;
 
-  public String mapUrlGetAccountByRiotId(AccountFilter filter) {
+  public String mapUrlGetAccountByGameTag(AccountFilter filter) {
     Map<String, String> params = new HashMap<>();
     params.put("{gameName}", filter.getGameName());
     params.put("{tagLine}", filter.getTagLine());
-    return mapUrl(params, basePath.concat(accountByRiotIdPath));
+    return mapUrl(params, basePath.concat(accountByGameTagPath));
   }
 }

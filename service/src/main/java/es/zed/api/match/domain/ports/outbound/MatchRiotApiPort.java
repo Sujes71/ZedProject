@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 @Component
 public class MatchRiotApiPort {
 
-  public static final String GET_MATCH_BY_PUUID_ADDRESS = "getMatchByPuuIdAddress";
+  public static final String GET_MATCHES_BY_ACCOUNT_ID_ADDRESS = "getMatchesByAccountIdAddress";
 
   private MatchRiotApiPort() {
   }
 
-  public Mono<List<String>> getMatchByPuuId(MatchFilter filter) {
-    return requestEvent(new Message<>(GET_MATCH_BY_PUUID_ADDRESS, filter));
+  public Mono<List<String>> getMatchesByAccountId(MatchFilter filter) {
+    return requestEvent(new Message<>(GET_MATCHES_BY_ACCOUNT_ID_ADDRESS, filter));
   }
 }

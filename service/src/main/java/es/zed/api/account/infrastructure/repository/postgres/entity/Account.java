@@ -9,7 +9,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Account {
 
 	@Id
-	private String puuid;
+	private String id;
 
 	@Column("game_name")
 	private String gameName;
@@ -17,18 +17,18 @@ public class Account {
 	@Column("tag_line")
 	private String tagLine;
 
-	public Account(String puuid, String gameName, String tagLine) {
-		this.puuid = puuid;
+	public Account(String id, String gameName, String tagLine) {
+		this.id = id;
 		this.gameName = gameName;
 		this.tagLine = tagLine;
 	}
 
-	public String getPuuid() {
-		return puuid;
+	public String getId() {
+		return id;
 	}
 
-	public void setPuuid(String puuid) {
-		this.puuid = puuid;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getGameName() {
@@ -53,18 +53,18 @@ public class Account {
 			return false;
 		}
 		Account account = (Account) o;
-		return Objects.equals(puuid, account.puuid);
+		return Objects.equals(id, account.id);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(puuid);
+		return Objects.hash(id);
 	}
 
 	@Override
 	public String toString() {
 		return "Account { " +
-			"puuid='" + puuid + '\'' +
+			"id='" + id + '\'' +
 			", gameName='" + gameName + '\'' +
 			", tagLine='" + tagLine + '\'' + " }";
 	}

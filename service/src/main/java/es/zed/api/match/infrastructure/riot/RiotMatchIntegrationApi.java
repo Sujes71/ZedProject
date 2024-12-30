@@ -1,6 +1,6 @@
 package es.zed.api.match.infrastructure.riot;
 
-import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCH_BY_PUUID_ADDRESS;
+import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCHES_BY_ACCOUNT_ID_ADDRESS;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.match.domain.model.MatchFilter;
@@ -26,12 +26,12 @@ public class RiotMatchIntegrationApi extends RestHandler {
 
   @PostConstruct
   public void start() {
-    register(GET_MATCH_BY_PUUID_ADDRESS, this::getMatchByPuuId);
+    register(GET_MATCHES_BY_ACCOUNT_ID_ADDRESS, this::getMatchesByAccountId);
   }
 
-  private Mono<List<String>> getMatchByPuuId(MatchFilter matchFilter) {
+  private Mono<List<String>> getMatchesByAccountId(MatchFilter matchFilter) {
     return doCall(
-        riotMatchUrlMapper.mapUrlGetMatchByPuuId(matchFilter),
+        riotMatchUrlMapper.mapUrlGetMatchesByAccountId(matchFilter),
         HttpMethod.GET,
         null,
         new ParameterizedTypeReference<>() {
