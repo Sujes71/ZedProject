@@ -18,7 +18,7 @@ public class AccountPersistencePort {
 	private AccountPersistencePort(){
 	}
 
-	public Mono<Account> getAccountByGameTag(AccountFilter filter) {
+	public Mono<Account> getAccountByGameTagDb(AccountFilter filter) {
 		return requestEvent(new Message<>(GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS, filter));
 	}
 

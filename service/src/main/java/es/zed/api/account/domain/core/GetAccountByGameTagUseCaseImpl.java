@@ -28,7 +28,7 @@ public class GetAccountByGameTagUseCaseImpl implements GetAccountByGameTagUseCas
 
   @Override
   public Mono<AccountDto> execute(AccountFilter filter) {
-    return accountPersistencePort.getAccountByGameTag(filter)
+    return accountPersistencePort.getAccountByGameTagDb(filter)
         .flatMap(account -> Mono.just(accountDto(account)))
         .switchIfEmpty(
             Mono.defer(() -> {

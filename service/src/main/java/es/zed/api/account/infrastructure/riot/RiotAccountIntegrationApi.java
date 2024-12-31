@@ -29,7 +29,12 @@ public class RiotAccountIntegrationApi extends RestHandler {
   }
 
   public Mono<AccountDto> getAccountByGameTag(AccountFilter filter) {
-    return doCall(riotAccountUrlMapper.mapUrlGetAccountByGameTag(filter), HttpMethod.GET, null, AccountDto.class);
+    return doCall(
+        riotAccountUrlMapper.mapUrlGetAccountByGameTag(filter),
+        HttpMethod.GET,
+        null,
+        AccountDto.class
+    );
   }
 
 }

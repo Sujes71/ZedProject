@@ -9,4 +9,8 @@ public class Routing {
   public static final String MATCH_PATH = "match";
 
   public static final String GET_MATCHES_BY_ACCOUNT_ID_PATH = "/matches/accountId/{accountId}";
+
+  public static final String SUMMONER_PATH = "summoner";
+
+  public static final String GET_SUMMONERS_BY_ACCOUNT_ID_PATH = "/summoners/accountId/{accountId}";
 }
