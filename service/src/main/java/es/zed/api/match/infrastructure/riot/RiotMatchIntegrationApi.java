@@ -1,9 +1,11 @@
 package es.zed.api.match.infrastructure.riot;
 
 import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCHES_BY_ACCOUNT_ID_ADDRESS;
+import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCHES_BY_MATCH_ID_ADDRESS;
 import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.match.domain.model.MatchFilter;
+import es.zed.api.match.infrastructure.riot.dto.MatchDto;
 import es.zed.api.match.infrastructure.riot.mapper.RiotMatchUrlMapper;
 import es.zed.api.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
@@ -27,6 +29,7 @@ public class RiotMatchIntegrationApi extends RestHandler {
   @PostConstruct
   public void start() {
     register(GET_MATCHES_BY_ACCOUNT_ID_ADDRESS, this::getMatchesByAccountId);
+    register(GET_MATCHES_BY_MATCH_ID_ADDRESS, this::getMatchByMatchId);
   }
 
   private Mono<List<String>> getMatchesByAccountId(MatchFilter matchFilter) {
@@ -36,6 +39,15 @@ public class RiotMatchIntegrationApi extends RestHandler {
         null,
         new ParameterizedTypeReference<>() {
         }
+    );
+  }
+
+  private Mono<MatchDto> getMatchByMatchId(String matchId) {
+    return doCall(
+        riotMatchUrlMapper.mapUrlGetMatchesByMatchId(matchId),
+        HttpMethod.GET,
+        null,
+        MatchDto.class
     );
   }
 }

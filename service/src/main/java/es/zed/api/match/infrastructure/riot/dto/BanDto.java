@@ -1,7 +1,28 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-public class BanDto {
+import es.zed.api.shared.infrastructure.riot.dto.Dto;
+
+public class BanDto extends Dto {
 
   private Integer championId;
   private Integer pickTurn;
+
+  public BanDto() {
+  }
+
+  public Integer getChampionId() {
+    return championId;
+  }
+
+  public void setChampionId(Integer championId) {
+    this.championId = championId;
+  }
+
+  public Integer getPickTurn() {
+    return pickTurn;
+  }
+
+  public void setPickTurn(Integer pickTurn) {
+    this.pickTurn = pickTurn;
+  }
 }

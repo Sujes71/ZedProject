@@ -15,12 +15,14 @@ public class RiotMatchUrlMapper {
   @Value("${riot.base.path}")
   private String basePath;
   @Value("${riot.match.by-puuid.path}")
-  private String matchByAccountIdPath;
+  private String matchesIdByAccountIdPath;
+  @Value("${riot.match.by-match-id.path}")
+  private String matchesByMatchIdPath;
 
   public String mapUrlGetMatchesByAccountId(MatchFilter filter) {
     Map<String, String> pathParams = new HashMap<>();
     pathParams.put("{puuid}", filter.getPuuid());
-    String url = mapUrl(pathParams, basePath.concat(matchByAccountIdPath));
+    String url = mapUrl(pathParams, basePath.concat(matchesIdByAccountIdPath));
 
     Map<String, Object> queryParams = new HashMap<>();
     queryParams.put("startTime", filter.getStartTime());
@@ -36,5 +38,11 @@ public class RiotMatchUrlMapper {
     }
 
     return url;
+  }
+
+  public String mapUrlGetMatchesByMatchId(String matchId) {
+    Map<String, String> pathParams = new HashMap<>();
+    pathParams.put("{matchId}",matchId);
+    return mapUrl(pathParams, basePath.concat(matchesByMatchIdPath));
   }
 }

@@ -9,9 +9,7 @@ public class  AccountDto extends Dto {
 
   @JsonAlias("puuid")
   private String id;
-
   private String gameName;
-
   private String tagLine;
 
   public AccountDto() {

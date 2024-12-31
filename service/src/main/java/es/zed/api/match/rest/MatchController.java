@@ -5,6 +5,7 @@ import static es.zed.api.shared.rest.Routing.GET_MATCHES_BY_ACCOUNT_ID_PATH;
 import static es.zed.api.shared.rest.Routing.MATCH_PATH;
 
 import es.zed.api.match.domain.ports.inbound.GetMatchesByAccountIdUseCase;
+import es.zed.api.match.infrastructure.riot.dto.MatchDto;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,7 @@ public class MatchController {
   }
 
   @GetMapping(path = GET_MATCHES_BY_ACCOUNT_ID_PATH, produces = "application/json")
-  public Mono<List<String>> getMatchesByAccountId(
+  public Mono<List<MatchDto>> getMatchesByAccountId(
       @PathVariable String accountId,
       @RequestParam(required = false) Long startTime,
       @RequestParam(required = false) Long endTime,
