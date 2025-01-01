@@ -22,7 +22,7 @@ public class SummonerController {
 	}
 
 	@GetMapping(path = GET_SUMMONERS_BY_ACCOUNT_ID_PATH, produces = "application/json")
-	public Mono<SummonerDto> getAccountByGameTag(@PathVariable String accountId) {
+	public Mono<SummonerDto> getSummonersByAccountId(@PathVariable String accountId) {
 		return getSummonersByAccountIdUseCase.execute(accountId);
 	}
 }
