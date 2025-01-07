@@ -1,64 +1,57 @@
 package es.zed.api.summoner.infrastructure.riot.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import es.zed.api.shared.infrastructure.riot.dto.Dto;
 
 public class SummonerDto extends Dto {
 
-	private String accountId;
+  private String id;
+  @JsonAlias("accountId")
+	private String summonerAccountId;
+  private long summonerLevel;
 	private int profileIconId;
 	private long revisionDate;
-	private String id;
-	private String puuid;
-	private long summonerLevel;
 
 	public SummonerDto() {
 	}
 
-	public String getAccountId() {
-		return accountId;
-	}
+  public long getSummonerLevel() {
+    return summonerLevel;
+  }
 
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
-	}
+  public void setSummonerLevel(long summonerLevel) {
+    this.summonerLevel = summonerLevel;
+  }
 
-	public int getProfileIconId() {
-		return profileIconId;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setProfileIconId(int profileIconId) {
-		this.profileIconId = profileIconId;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public long getRevisionDate() {
-		return revisionDate;
-	}
+  public long getRevisionDate() {
+    return revisionDate;
+  }
 
-	public void setRevisionDate(long revisionDate) {
-		this.revisionDate = revisionDate;
-	}
+  public void setRevisionDate(long revisionDate) {
+    this.revisionDate = revisionDate;
+  }
 
-	public String getId() {
-		return id;
-	}
+  public int getProfileIconId() {
+    return profileIconId;
+  }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public void setProfileIconId(int profileIconId) {
+    this.profileIconId = profileIconId;
+  }
 
-	public String getPuuid() {
-		return puuid;
-	}
+  public String getSummonerAccountId() {
+    return summonerAccountId;
+  }
 
-	public void setPuuid(String puuid) {
-		this.puuid = puuid;
-	}
-
-	public long getSummonerLevel() {
-		return summonerLevel;
-	}
-
-	public void setSummonerLevel(long summonerLevel) {
-		this.summonerLevel = summonerLevel;
-	}
+  public void setSummonerAccountId(String summonerAccountId) {
+    this.summonerAccountId = summonerAccountId;
+  }
 }

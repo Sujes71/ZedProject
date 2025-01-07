@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class RiotSummonerUrlMapper {
 
-	@Value("${riot.base.path}")
+	@Value("${riot.base.euw1.path}")
 	private String basePath;
 	@Value("${riot.summoner.by-puuid.path}")
 	private String summonerByAccountIdPath;
 
 	public String mapUrlGetSummonersByAccountId(String accountId) {
 		Map<String, String> params = new HashMap<>();
-		params.put("{rsoPUUID}", accountId);
+		params.put("{encryptedPUUID}", accountId);
 		return mapUrl(params, basePath.concat(summonerByAccountIdPath));
 	}
 }
