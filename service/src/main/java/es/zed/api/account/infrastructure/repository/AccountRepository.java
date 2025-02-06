@@ -28,7 +28,7 @@ public class AccountRepository {
 
 	@PostConstruct
 	public void start() {
-    register(GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS, this::findByGameTag);
+    	register(GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS, this::findByGameTag);
 		register(SAVE_ACCOUNT_DB_ADDRESS, this::saveAccount);
 	}
 
