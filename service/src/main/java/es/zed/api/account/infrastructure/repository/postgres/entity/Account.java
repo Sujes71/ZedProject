@@ -1,5 +1,6 @@
 package es.zed.api.account.infrastructure.repository.postgres.entity;
 
+import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -67,5 +68,9 @@ public class Account {
 			"id='" + id + '\'' +
 			", gameName='" + gameName + '\'' +
 			", tagLine='" + tagLine + '\'' + " }";
+	}
+
+	public AccountDto accountDto() {
+		return new AccountDto(this.id, this.gameName, this.tagLine);
 	}
 }

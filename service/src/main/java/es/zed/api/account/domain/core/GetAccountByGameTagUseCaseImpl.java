@@ -1,7 +1,5 @@
 package es.zed.api.account.domain.core;
 
-import static es.zed.api.account.infrastructure.riot.dto.AccountDto.accountDto;
-
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.domain.ports.inbound.GetAccountByGameTagUseCase;
 import es.zed.api.account.domain.ports.outbound.AccountPersistencePort;
@@ -29,7 +27,7 @@ public class GetAccountByGameTagUseCaseImpl implements GetAccountByGameTagUseCas
   @Override
   public Mono<AccountDto> execute(AccountFilter filter) {
     return accountPersistencePort.getAccountByGameTagDb(filter)
-        .flatMap(account -> Mono.just(accountDto(account)))
+        .flatMap(account -> Mono.just(account.accountDto()))
         .switchIfEmpty(
             Mono.defer(() -> {
               log.info("No record found in the database, calling the API...");
