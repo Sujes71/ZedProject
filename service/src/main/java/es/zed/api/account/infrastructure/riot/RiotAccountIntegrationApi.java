@@ -1,12 +1,12 @@
 package es.zed.api.account.infrastructure.riot;
 
 import static es.zed.api.account.domain.ports.outbound.AccountRiotApiPort.GET_ACCOUNT_BY_GAME_TAG_ADDRESS;
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
 import es.zed.api.account.infrastructure.riot.mapper.RiotAccountUrlMapper;
-import es.zed.api.shared.infrastructure.riot.RestHandler;
+import es.zed.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;

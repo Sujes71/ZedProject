@@ -1,11 +1,11 @@
 package es.zed.api.account.domain.ports.outbound;
 
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.requestEvent;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.requestEvent;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.infrastructure.repository.postgres.entity.Account;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;
-import es.zed.api.shared.domain.model.Message;
+import es.zed.shared.domain.model.Message;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

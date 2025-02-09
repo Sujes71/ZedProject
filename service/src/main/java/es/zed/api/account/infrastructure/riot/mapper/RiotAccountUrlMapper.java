@@ -1,6 +1,6 @@
 package es.zed.api.account.infrastructure.riot.mapper;
 
-import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
+import static es.zed.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import java.util.HashMap;

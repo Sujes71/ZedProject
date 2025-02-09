@@ -1,6 +1,6 @@
 package es.zed.api.summoner.infrastructure.riot.mapper;
 
-import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
+import static es.zed.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
 
 import java.util.HashMap;
 import java.util.Map;

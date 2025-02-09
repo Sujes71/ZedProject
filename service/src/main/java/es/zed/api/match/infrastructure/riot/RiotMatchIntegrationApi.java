@@ -2,12 +2,12 @@ package es.zed.api.match.infrastructure.riot;
 
 import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCHES_BY_ACCOUNT_ID_ADDRESS;
 import static es.zed.api.match.domain.ports.outbound.MatchRiotApiPort.GET_MATCHES_BY_MATCH_ID_ADDRESS;
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.match.domain.model.MatchFilter;
 import es.zed.api.match.infrastructure.riot.dto.MatchDto;
 import es.zed.api.match.infrastructure.riot.mapper.RiotMatchUrlMapper;
-import es.zed.api.shared.infrastructure.riot.RestHandler;
+import es.zed.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import org.springframework.core.ParameterizedTypeReference;

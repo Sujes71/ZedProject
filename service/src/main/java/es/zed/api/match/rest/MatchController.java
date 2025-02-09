@@ -1,8 +1,8 @@
 package es.zed.api.match.rest;
 
 import static es.zed.api.match.rest.adapter.MatchFilterAdapter.adapt;
-import static es.zed.api.shared.rest.Routing.GET_MATCHES_BY_ACCOUNT_ID_PATH;
-import static es.zed.api.shared.rest.Routing.MATCH_PATH;
+import static es.zed.shared.rest.Routing.GET_MATCHES_BY_ACCOUNT_ID_PATH;
+import static es.zed.shared.rest.Routing.MATCH_PATH;
 
 import es.zed.api.match.domain.ports.inbound.GetMatchesByAccountIdUseCase;
 import es.zed.api.match.infrastructure.riot.dto.MatchDto;

@@ -1,6 +1,6 @@
 package es.zed.api.match.domain.model;
 
-import es.zed.api.shared.domain.model.Filter;
+import es.zed.shared.domain.model.Filter;
 import java.util.Objects;
 
 public class MatchFilter extends Filter {

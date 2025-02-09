@@ -1,8 +1,8 @@
 package es.zed.api.account.rest;
 
 import static es.zed.api.account.rest.adapter.AccountFilterAdapter.adapt;
-import static es.zed.api.shared.rest.Routing.ACCOUNT_PATH;
-import static es.zed.api.shared.rest.Routing.GET_ACCOUNT_BY_GAME_TAG_PATH;
+import static es.zed.shared.rest.Routing.ACCOUNT_PATH;
+import static es.zed.shared.rest.Routing.GET_ACCOUNT_BY_GAME_TAG_PATH;
 
 import es.zed.api.account.domain.ports.inbound.GetAccountByGameTagUseCase;
 import es.zed.api.account.infrastructure.riot.dto.AccountDto;

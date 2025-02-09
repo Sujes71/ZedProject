@@ -1,4 +1,4 @@
-package es.zed.api.shared.infrastructure.riot.mapper;
+package es.zed.shared.infrastructure.riot.mapper;
 
 import java.util.Map;
 import java.util.Objects;

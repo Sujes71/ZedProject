@@ -1,10 +1,10 @@
 package es.zed.api.match.domain.ports.outbound;
 
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.requestEvent;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.requestEvent;
 
 import es.zed.api.match.domain.model.MatchFilter;
 import es.zed.api.match.infrastructure.riot.dto.MatchDto;
-import es.zed.api.shared.domain.model.Message;
+import es.zed.shared.domain.model.Message;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package es.zed.api.shared.domain.ports.inbound;
+package es.zed.shared.domain.ports.inbound;
 
 @FunctionalInterface
 public interface UseCase<I, R> {

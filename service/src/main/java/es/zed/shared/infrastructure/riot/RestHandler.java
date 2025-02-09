@@ -1,4 +1,4 @@
-package es.zed.api.shared.infrastructure.riot;
+package es.zed.shared.infrastructure.riot;
 
 import java.net.URI;
 import java.util.Objects;

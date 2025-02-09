@@ -1,6 +1,6 @@
-package es.zed.api.shared.domain.ports.outbound;
+package es.zed.shared.domain.ports.outbound;
 
-import es.zed.api.shared.domain.model.Message;
+import es.zed.shared.domain.model.Message;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;

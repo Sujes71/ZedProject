@@ -1,7 +1,7 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import es.zed.api.shared.infrastructure.riot.dto.Dto;
+import es.zed.shared.infrastructure.riot.dto.Dto;
 import java.util.List;
 
 public class ChallengesDto extends Dto {

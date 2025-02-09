@@ -2,7 +2,7 @@ package es.zed.api.account.infrastructure.repository;
 
 import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.GET_ACCOUNT_BY_GAME_TAG_DB_ADDRESS;
 import static es.zed.api.account.domain.ports.outbound.AccountPersistencePort.SAVE_ACCOUNT_DB_ADDRESS;
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 
 import es.zed.api.account.domain.model.AccountFilter;
 import es.zed.api.account.infrastructure.repository.postgres.dao.AccountDao;

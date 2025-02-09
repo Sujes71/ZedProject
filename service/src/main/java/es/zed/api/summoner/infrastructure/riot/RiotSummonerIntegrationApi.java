@@ -1,9 +1,9 @@
 package es.zed.api.summoner.infrastructure.riot;
 
-import static es.zed.api.shared.domain.ports.outbound.OutboundPort.register;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 import static es.zed.api.summoner.domain.ports.outbound.SummonerRiotApiPort.GET_SUMMONERS_BY_ACCOUNT_ID_ADDRESS;
 
-import es.zed.api.shared.infrastructure.riot.RestHandler;
+import es.zed.shared.infrastructure.riot.RestHandler;
 import es.zed.api.summoner.infrastructure.riot.dto.SummonerDto;
 import es.zed.api.summoner.infrastructure.riot.mapper.RiotSummonerUrlMapper;
 import jakarta.annotation.PostConstruct;

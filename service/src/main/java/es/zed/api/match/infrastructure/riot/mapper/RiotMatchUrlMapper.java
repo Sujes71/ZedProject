@@ -1,7 +1,7 @@
 package es.zed.api.match.infrastructure.riot.mapper;
 
-import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.buildQueryParams;
-import static es.zed.api.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
+import static es.zed.shared.infrastructure.riot.mapper.UrlMapper.buildQueryParams;
+import static es.zed.shared.infrastructure.riot.mapper.UrlMapper.mapUrl;
 
 import es.zed.api.match.domain.model.MatchFilter;
 import java.util.HashMap;

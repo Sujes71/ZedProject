@@ -1,4 +1,4 @@
-package es.zed.api.shared.rest;
+package es.zed.shared.rest;
 
 public class Routing {
 

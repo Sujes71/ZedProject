@@ -1,7 +1,7 @@
 package es.zed.api.summoner.rest;
 
-import static es.zed.api.shared.rest.Routing.GET_SUMMONERS_BY_ACCOUNT_ID_PATH;
-import static es.zed.api.shared.rest.Routing.SUMMONER_PATH;
+import static es.zed.shared.rest.Routing.GET_SUMMONERS_BY_ACCOUNT_ID_PATH;
+import static es.zed.shared.rest.Routing.SUMMONER_PATH;
 
 import es.zed.api.summoner.domain.ports.inbound.GetSummonersByAccountIdUseCase;
 import es.zed.api.summoner.infrastructure.riot.dto.SummonerDto;
