@@ -1,9 +1,8 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
 import java.util.List;
 
-public class PerkStyleDto extends Dto {
+public class PerkStyleDto {
 
   private String description;
   private List<PerkStyleSelectionDto> selections;

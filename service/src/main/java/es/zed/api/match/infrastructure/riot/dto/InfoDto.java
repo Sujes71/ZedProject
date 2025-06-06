@@ -1,8 +1,8 @@
 package es.zed.api.match.infrastructure.riot.dto;
-import es.zed.shared.infrastructure.riot.dto.Dto;
+
 import java.util.List;
 
-public class InfoDto extends Dto {
+public class InfoDto {
 
   private String endOfGameResult;
   private long gameCreation;

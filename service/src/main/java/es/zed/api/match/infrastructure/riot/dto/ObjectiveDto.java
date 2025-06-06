@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class ObjectiveDto extends Dto {
+public class ObjectiveDto {
 
   private boolean first;
   private int kills;

@@ -1,9 +1,8 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
 import java.util.List;
 
-public class TeamDto extends Dto {
+public class TeamDto {
 
   private List<BanDto> bans;
   private ObjectivesDto objectives;

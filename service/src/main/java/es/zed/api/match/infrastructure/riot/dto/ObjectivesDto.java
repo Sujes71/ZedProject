@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class ObjectivesDto extends Dto {
+public class ObjectivesDto {
 
   private ObjectiveDto baron;
   private ObjectiveDto champion;

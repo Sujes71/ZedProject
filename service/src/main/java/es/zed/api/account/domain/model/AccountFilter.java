@@ -1,9 +1,8 @@
 package es.zed.api.account.domain.model;
 
-import es.zed.shared.domain.model.Filter;
 import java.util.Objects;
 
-public class AccountFilter extends Filter {
+public class AccountFilter {
 
   private String gameName;
 

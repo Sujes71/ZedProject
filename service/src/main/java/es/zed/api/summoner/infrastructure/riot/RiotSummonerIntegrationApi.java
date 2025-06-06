@@ -1,11 +1,11 @@
 package es.zed.api.summoner.infrastructure.riot;
 
-import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 import static es.zed.api.summoner.domain.ports.outbound.SummonerRiotApiPort.GET_SUMMONERS_BY_ACCOUNT_ID_ADDRESS;
+import static es.zed.shared.domain.ports.outbound.OutboundPort.register;
 
-import es.zed.shared.infrastructure.riot.RestHandler;
 import es.zed.api.summoner.infrastructure.riot.dto.SummonerDto;
 import es.zed.api.summoner.infrastructure.riot.mapper.RiotSummonerUrlMapper;
+import es.zed.shared.infrastructure.riot.RestHandler;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;

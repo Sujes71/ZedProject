@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class MissionsDto extends Dto {
+public class MissionsDto {
 
   private int playerScore0;
   private int playerScore1;

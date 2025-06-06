@@ -1,9 +1,8 @@
 package es.zed.api.summoner.infrastructure.riot.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import es.zed.shared.infrastructure.riot.dto.Dto;
 
-public class SummonerDto extends Dto {
+public class SummonerDto {
 
   private String id;
   @JsonAlias("accountId")

@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class ParticipantDto extends Dto {
+public class ParticipantDto {
 
   private int assistMePings;
   private int assists;

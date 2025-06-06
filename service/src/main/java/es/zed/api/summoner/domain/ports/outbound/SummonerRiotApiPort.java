@@ -2,8 +2,8 @@ package es.zed.api.summoner.domain.ports.outbound;
 
 import static es.zed.shared.domain.ports.outbound.OutboundPort.requestEvent;
 
-import es.zed.shared.domain.model.Message;
 import es.zed.api.summoner.infrastructure.riot.dto.SummonerDto;
+import es.zed.shared.domain.model.Message;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 

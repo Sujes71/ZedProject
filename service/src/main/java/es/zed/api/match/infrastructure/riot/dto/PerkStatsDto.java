@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class PerkStatsDto extends Dto {
+public class PerkStatsDto {
 
   private int defense;
   private int flex;

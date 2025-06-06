@@ -1,8 +1,6 @@
 package es.zed.api.match.infrastructure.riot.dto;
 
-import es.zed.shared.infrastructure.riot.dto.Dto;
-
-public class BanDto extends Dto {
+public class BanDto {
 
   private Integer championId;
   private Integer pickTurn;
